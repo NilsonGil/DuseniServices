@@ -73,4 +73,18 @@ public class DuseniController {
 	public String editProduct(@Valid @RequestBody Product product) {
 		return JsonManager.toJson(productRepository.save(product));
 	}
+	
+	
+	//--------------------------------------------------------------------------------//
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
