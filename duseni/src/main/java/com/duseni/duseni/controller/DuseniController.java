@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.duseni.duseni.entities.City;
+import com.duseni.duseni.entities.Member;
 import com.duseni.duseni.entities.Product;
 import com.duseni.duseni.persistence.JsonManager;
+import com.duseni.duseni.repository.CityRepository;
+import com.duseni.duseni.repository.MemberRepository;
 import com.duseni.duseni.repository.ProductRepository;
 
 
@@ -24,6 +28,12 @@ public class DuseniController {
 	@Autowired
 	private ProductRepository productRepository;
 	
+	
+	@Autowired
+	private  CityRepository cityRepository;
+	
+	@Autowired
+	private  MemberRepository	memberRepository;
 	
 	
 	@GetMapping(value = "/Hola")
@@ -81,6 +91,88 @@ public class DuseniController {
 	
 	
 	
+	//----------------------------- crud ciudades ------------------------------------//
+	
+	@PostMapping (value = "/addCity")
+	public String addCity(@Valid @RequestBody City city) {
+		return JsonManager.toJson(cityRepository.save(city));
+	}
+	
+	/*
+	 * busca un ciudad
+	 */
+	@GetMapping(value = "/city/{id}")
+	public String getCity(@PathVariable Long id) {
+		return JsonManager.toJson(cityRepository.findById(id));
+	}
+	
+	
+	/*
+	 * elimina un ciudad por id
+	 */
+	@DeleteMapping(value = "/removeCity/{id}")
+	public void removeCity( @PathVariable Long id) {
+		cityRepository.deleteById(id);
+	}
+	
+	
+	/*
+	 * Edita  ciudad
+	 */
+
+	@PutMapping(value = "/editCity")
+	public String editCity(@Valid @RequestBody City city) {
+		return JsonManager.toJson(cityRepository.save(city));
+	}
+	
+	
+	
+	
+	
+	//--------------------------------------------------------------------------------//
+
+	
+	
+	
+	
+	//----------------------------- crud miembros ------------------------------------//
+	
+	
+	@PostMapping (value = "/addMember")
+	public String addMember(@Valid @RequestBody Member member) {
+		return JsonManager.toJson(memberRepository.save(member));
+	}
+	
+	
+	
+	@GetMapping(value = "/member/{id}")
+	public String getMember(@PathVariable Long id) {
+		return JsonManager.toJson(memberRepository.findById(id));
+	}
+	
+	
+	/*
+	 * elimina un ciudad por id
+	 */
+	@DeleteMapping(value = "/removeMember/{id}")
+	public void removeMember( @PathVariable Long id) {
+		memberRepository.deleteById(id);
+	}
+	
+	
+	/*
+	 * Edita  ciudad
+	 */
+
+	@PutMapping(value = "/editMember")
+	public String editMember(@Valid @RequestBody Member member) {
+		return JsonManager.toJson(memberRepository.save(member));
+	}
+	
+	
+	
+	
+	//--------------------------------------------------------------------------------//
 	
 	
 	

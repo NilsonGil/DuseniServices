@@ -18,7 +18,7 @@ public class Member {
 	// IdentificationCard =  cedula
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_users")
-	private int IdentificationCard;
+	private Long IdentificationCard;
 	
 	@NotNull
 	private String  firstName;
@@ -50,11 +50,11 @@ public class Member {
 	@JoinColumn(name = "address_id", referencedColumnName = "id")
 	private Address address;
 
-	public int getIdentificationCard() {
+	public Long getIdentificationCard() {
 		return IdentificationCard;
 	}
 
-	public void setIdentificationCard(int identificationCard) {
+	public void setIdentificationCard(Long identificationCard) {
 		IdentificationCard = identificationCard;
 	}
 

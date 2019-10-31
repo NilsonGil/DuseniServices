@@ -16,7 +16,7 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_users")
 	@Column(name = "id")
-	private int id;
+	private Long id;
 
 	@NotNull
 	private String descripcion;
@@ -28,11 +28,11 @@ public class Address {
 	@JoinColumn(name = "city_id", insertable = false, updatable = false)
 	private City city;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
