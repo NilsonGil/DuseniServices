@@ -23,9 +23,12 @@ public class Address {
 
 	@OneToOne(mappedBy = "address")
 	private Member menber;
-
+	
+	@OneToOne(mappedBy = "address")
+	private Request request ;
+	
 	@ManyToOne
-	@JoinColumn(name = "city_id", insertable = false, updatable = false)
+	@JoinColumn(name = "city_id")
 	private City city;
 
 	public Long getId() {
@@ -58,6 +61,14 @@ public class Address {
 
 	public void setCity(City city) {
 		this.city = city;
+	}
+	
+	public Request getRequest() {
+		return request;
+	}
+
+	public void setRequest(Request request) {
+		this.request = request;
 	}
 
 	@Override

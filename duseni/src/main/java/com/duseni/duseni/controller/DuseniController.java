@@ -17,6 +17,7 @@ import com.duseni.duseni.entities.Product;
 import com.duseni.duseni.persistence.JsonManager;
 import com.duseni.duseni.repository.CityRepository;
 import com.duseni.duseni.repository.MemberRepository;
+import com.duseni.duseni.repository.OrderRepository;
 import com.duseni.duseni.repository.ProductRepository;
 
 
@@ -34,6 +35,9 @@ public class DuseniController {
 	
 	@Autowired
 	private  MemberRepository	memberRepository;
+	
+	@Autowired
+	private  OrderRepository	orderRepository;
 	
 	
 	@GetMapping(value = "/Hola")

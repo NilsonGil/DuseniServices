@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -18,7 +19,8 @@ public class Product {
 
 	@NotNull
 	private String productImage;
-
+	
+	
 	public Long getIdProduct() {
 		return idProduct;
 	}
@@ -37,6 +39,11 @@ public class Product {
 
 	public void setProductImage(String productImage) {
 		this.productImage = productImage;
+	}
+	
+	
+	public void setIdProduct(Long idProduct) {
+		this.idProduct = idProduct;
 	}
 
 	@Override
