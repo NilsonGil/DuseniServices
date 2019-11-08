@@ -27,6 +27,8 @@ public class Address {
 	@OneToOne(mappedBy = "delivery_address")
 	private Request request ;
 	
+	@OneToOne(mappedBy = "address_association")
+	private Association association;
 	
 
 	@ManyToOne

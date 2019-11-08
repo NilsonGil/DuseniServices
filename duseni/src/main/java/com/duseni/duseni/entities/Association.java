@@ -39,8 +39,13 @@ public class Association {
 		@OneToMany
 		@JoinColumn(name = "products") // we need to duplicate the physical information
 		private List<Product> products;
-
-
+		
+		@NotNull
+		@OneToOne(cascade = CascadeType.ALL)
+		@JoinColumn(name = "id_address", referencedColumnName = "id_address")
+		private Address address_association;
+		
+		
 		public Long getIdentificationCard() {
 			return IdentificationCard;
 		}
