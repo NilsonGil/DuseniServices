@@ -7,7 +7,7 @@ import java.util.Objects;
 
 
 @SuppressWarnings("serial")
-public class ContributePK implements Serializable{
+public class ContributionPK implements Serializable{
 
 	private long idMember;
 	private long idRequest;
@@ -32,7 +32,7 @@ public class ContributePK implements Serializable{
             return false;
         }
         
-        final ContributePK other = (ContributePK) obj;
+        final ContributionPK other = (ContributionPK) obj;
         if (!Objects.equals(this.idMember, other.idMember)) {
             return false;
         }

@@ -7,14 +7,14 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.validation.constraints.NotNull;
 
-import com.duseni.duseni.entitiesPK.ContributePK;
+import com.duseni.duseni.entitiesPK.ContributionPK;
 
 // clase de aportes
 
 
 @Entity
-@IdClass(value = ContributePK.class)
-public class Contribute {
+@IdClass(value = ContributionPK.class)
+public class Contribution {
 	
 	
 	/**
