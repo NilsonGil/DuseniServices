@@ -27,9 +27,24 @@ public class Address {
 	@OneToOne(mappedBy = "delivery_address")
 	private Request request ;
 	
+	
+
 	@ManyToOne
 	@JoinColumn(name = "city_id")
 	private City city;
+
+	
+	
+	
+	public Long getId_address() {
+		return id_address;
+	}
+
+	public void setId_address(Long id_address) {
+		this.id_address = id_address;
+	}
+
+
 
 	public Long getId() {
 		return id_address;
