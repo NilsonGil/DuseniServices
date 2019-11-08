@@ -35,6 +35,7 @@ public class Request {
 	
 	@NotNull 
 	private RequestState request_state;
+	///sdasjdas
 	
 	@NotNull
 	@OneToOne
