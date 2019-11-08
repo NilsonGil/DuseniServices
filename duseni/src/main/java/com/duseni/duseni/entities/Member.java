@@ -47,7 +47,7 @@ public class Member {
 	
 	@NotNull
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "address_id", referencedColumnName = "id")
+	@JoinColumn(name = "id_address", referencedColumnName = "id_address")
 	private Address address;
 
 	public Long getIdentificationCard() {

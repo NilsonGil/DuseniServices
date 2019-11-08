@@ -15,7 +15,7 @@ public class Address {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_users")
-	@Column(name = "id")
+	@Column(name = "id_address")
 	private Long id_address;
 
 	@NotNull
