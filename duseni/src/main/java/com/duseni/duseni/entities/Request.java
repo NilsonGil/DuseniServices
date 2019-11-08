@@ -33,9 +33,6 @@ public class Request {
 	@JoinColumn(name = "delivery_address", referencedColumnName = "id_address")
 	private Address delivery_address;
 	
-	@NotNull 
-	private RequestState request_state;
-	///sdasjdas
 	
 	@NotNull
 	@OneToOne
