@@ -20,7 +20,7 @@ public class Request {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_users")
 	@Column(name = "id_request")
-	private Long id;
+	private Long id_request;
 	@NotNull
 	private int  quantity;
 	@NotNull
@@ -36,60 +36,5 @@ public class Request {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id", referencedColumnName = "id")
 	private Address address;
-
-	
-	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public int getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-	public Date getDateOrder() {
-		return dateOrder;
-	}
-	public void setDateOrder(Date dateOrder) {
-		this.dateOrder = dateOrder;
-	}
-	public Date getDateLimit() {
-		return dateLimit;
-	}
-	public void setDateLimit(Date dateLimit) {
-		this.dateLimit = dateLimit;
-	}
-	public double getUnitPrice() {
-		return unitPrice;
-	}
-	public void setUnitPrice(double unitPrice) {
-		this.unitPrice = unitPrice;
-	}
-	public boolean isActivo() {
-		return isActivo;
-	}
-	public void setActivo(boolean isActivo) {
-		this.isActivo = isActivo;
-	}
-	public Address getAddress() {
-		return address;
-	}
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-	
-	
-	
-	
-	
-	
-
-
-
-	
 
 }

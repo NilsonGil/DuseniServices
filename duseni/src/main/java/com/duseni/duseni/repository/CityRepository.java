@@ -7,4 +7,6 @@ import com.duseni.duseni.entities.Product;
 
 public interface CityRepository extends CrudRepository<City, Long>  {
 
+		
+	
 }
