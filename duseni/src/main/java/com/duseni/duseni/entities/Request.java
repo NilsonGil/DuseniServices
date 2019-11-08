@@ -22,19 +22,23 @@ public class Request {
 	@Column(name = "id_request")
 	private Long id_request;
 	@NotNull
-	private int  quantity;
+	private String description;
 	@NotNull
-	private Date dateOrder;
+	private Date creation_date_request;
 	@NotNull
-	private Date dateLimit;
-	@NotNull
-	private double unitPrice;
-	@NotNull
-	private boolean isActivo;
+	private Date limit_date_request;
+	
+	@NotNull 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "delivery_address", referencedColumnName = "id_address")
+	private Address delivery_address;
 	
 	@NotNull
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "address_id", referencedColumnName = "id")
-	private Address address;
+	@OneToOne
+	@JoinColumn(name = "id_product", referencedColumnName = "id_product")
+	private Product product;
+	
+	@NotNull
+	private boolean is_active;
 
 }

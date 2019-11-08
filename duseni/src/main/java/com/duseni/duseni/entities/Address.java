@@ -16,15 +16,15 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_users")
 	@Column(name = "id")
-	private Long id;
+	private Long id_address;
 
 	@NotNull
 	private String descripcion;
 
 	@OneToOne(mappedBy = "address")
 	private Member menber;
-	
-	@OneToOne(mappedBy = "address")
+		
+	@OneToOne(mappedBy = "delivery_address")
 	private Request request ;
 	
 	@ManyToOne
@@ -32,11 +32,11 @@ public class Address {
 	private City city;
 
 	public Long getId() {
-		return id;
+		return id_address;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.id_address = id;
 	}
 
 	public Member getMenber() {
@@ -73,7 +73,7 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", descripcion=" + descripcion + ", menber=" + menber + ", city=" + city + "]";
+		return "Address [id=" + id_address + ", descripcion=" + descripcion + ", menber=" + menber + ", city=" + city + "]";
 	}
 
 	

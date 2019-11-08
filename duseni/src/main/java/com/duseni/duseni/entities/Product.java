@@ -12,7 +12,7 @@ public class Product {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_users")
-	private Long idProduct;
+	private Long id_product;
 
 	@NotNull
 	private String nameProduct;
@@ -20,9 +20,12 @@ public class Product {
 	@NotNull
 	private String productImage;
 	
+	@NotNull
+	@OneToOne(mappedBy = "product")
+	private Request request;
 	
 	public Long getIdProduct() {
-		return idProduct;
+		return id_product;
 	}
 
 	public String getNameProduct() {
@@ -43,12 +46,12 @@ public class Product {
 	
 	
 	public void setIdProduct(Long idProduct) {
-		this.idProduct = idProduct;
+		this.id_product = idProduct;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [idProduct=" + idProduct + ", nameProduct=" + nameProduct + ", productImage=" + productImage
+		return "Product [idProduct=" + id_product + ", nameProduct=" + nameProduct + ", productImage=" + productImage
 				+ "]";
 	}
 
