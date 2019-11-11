@@ -88,6 +88,13 @@ public class DuseniController {
 		return JsonManager.toJson(productRepository.save(product));
 	}
 	
+	/*
+	 * Obtener todos los productos de la base de datos
+	 */
+	@GetMapping(value = "/allProducts")
+	public String getallProducts() {
+		return JsonManager.toJson(productRepository.findAll());
+	}
 	
 	//--------------------------------------------------------------------------------//
 	
@@ -163,6 +170,14 @@ public class DuseniController {
 		memberRepository.deleteById(id);
 	}
 	
+	
+	/*
+	 * Obtener todos los miembros
+	 */
+	@GetMapping(value = "/allMembers")
+	public String getAllMembers() {
+		return JsonManager.toJson(memberRepository.findAll());
+	}
 	
 	/*
 	 * Edita  ciudad
