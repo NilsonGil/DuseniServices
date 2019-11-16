@@ -3,6 +3,7 @@ package com.duseni.duseni.entities;
 import java.sql.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -47,7 +48,7 @@ public class Member {
 	
 	@NotNull
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_address", referencedColumnName = "id_address")
+//	@JoinColumn(name = "id_address", referencedColumnName = "id_address")
 	private Address address;
 
 	public Long getIdentificationCard() {

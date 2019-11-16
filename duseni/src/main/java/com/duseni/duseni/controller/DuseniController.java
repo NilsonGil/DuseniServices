@@ -1,5 +1,7 @@
 package com.duseni.duseni.controller;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -158,7 +160,12 @@ public class DuseniController {
 	
 	@GetMapping(value = "/member/{id}")
 	public String getMember(@PathVariable Long id) {
-		return JsonManager.toJson(memberRepository.findById(id));
+		System.out.println("Consulta ---------------------" + memberRepository.findById(id));
+		Optional<Member> m =  memberRepository.findById(id);
+		System.out.println("Consulta ---------------------" + m.get());
+		System.out.println(JsonManager.simpleJsonWithCustomSerialization(m.get()));
+//		return JsonManager.toJson(memberRepository.findById(id));
+		return "Hola";
 	}
 	
 	

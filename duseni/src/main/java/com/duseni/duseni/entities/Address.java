@@ -21,8 +21,6 @@ public class Address {
 	@NotNull
 	private String descripcion;
 
-	@OneToOne(mappedBy = "address")
-	private Member menber;
 		
 	@OneToOne(mappedBy = "delivery_address")
 	private Request request ;
@@ -31,7 +29,7 @@ public class Address {
 	private Association association;
 	
 
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name = "city_id")
 	private City city;
 
@@ -56,13 +54,7 @@ public class Address {
 		this.id_address = id;
 	}
 
-	public Member getMenber() {
-		return menber;
-	}
 
-	public void setMenber(Member menber) {
-		this.menber = menber;
-	}
 
 	public String getDescripcion() {
 		return descripcion;
@@ -88,10 +80,7 @@ public class Address {
 		this.request = request;
 	}
 
-	@Override
-	public String toString() {
-		return "Address [id=" + id_address + ", descripcion=" + descripcion + ", menber=" + menber + ", city=" + city + "]";
-	}
+
 
 	
 }
