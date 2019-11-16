@@ -24,10 +24,7 @@ public class City {
 	@NotNull
 	private String postalCode;
 		
-	 @OneToMany
-	 @JoinColumn(name = "city_id") // we need to duplicate the physical information
-	 private List<Address> items;
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -52,18 +49,6 @@ public class City {
 		this.postalCode = postalCode;
 	}
 
-	public List<Address> getItems() {
-		return items;
-	}
-
-	public void setItems(List<Address> items) {
-		this.items = items;
-	}
-
-	@Override
-	public String toString() {
-		return "City [id=" + id + ", name=" + name + ", postalCode=" + postalCode + ", items=" + items + "]";
-	}
 
 
 

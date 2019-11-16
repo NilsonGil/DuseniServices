@@ -30,7 +30,7 @@ public class Request {
 	
 	@NotNull 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "delivery_address", referencedColumnName = "id_address")
+//	@JoinColumn(name = "delivery_address", referencedColumnName = "id_address")
 	private Address delivery_address;
 	
 	/*@NotNull

@@ -165,7 +165,7 @@ public class DuseniController {
 		System.out.println("Consulta ---------------------" + m.get());
 		System.out.println(JsonManager.simpleJsonWithCustomSerialization(m.get()));
 //		return JsonManager.toJson(memberRepository.findById(id));
-		return "Hola";
+		return JsonManager.toJson(m.get());
 	}
 	
 	

@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
+import com.google.gson.annotations.SerializedName;
+
 @Entity
 public class Member {
 	
@@ -49,6 +51,7 @@ public class Member {
 	@NotNull
 	@OneToOne(cascade = CascadeType.ALL)
 //	@JoinColumn(name = "id_address", referencedColumnName = "id_address")
+	@SerializedName("address")
 	private Address address;
 
 	public Long getIdentificationCard() {

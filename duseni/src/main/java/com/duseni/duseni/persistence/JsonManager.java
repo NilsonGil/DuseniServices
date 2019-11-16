@@ -33,4 +33,14 @@ public class JsonManager {
 	  System.out.println(json);
 	  return json;
 	}
+	
+	
+	public static String toJson2(Object obj) {
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd-HH:mm:ss").create(); //formato especial para la fecha en la que se retorna el objeto en forma de json
+		
+		
+		
+		return gson.toJson(obj);
+	}
+	
 }

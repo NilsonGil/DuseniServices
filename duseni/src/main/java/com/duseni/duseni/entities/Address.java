@@ -1,5 +1,7 @@
 package com.duseni.duseni.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +13,12 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Address {
+public class Address implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_users")
@@ -21,21 +28,10 @@ public class Address {
 	@NotNull
 	private String descripcion;
 
-		
-	@OneToOne(mappedBy = "delivery_address")
-	private Request request ;
-	
-	@OneToOne(mappedBy = "address_association")
-	private Association association;
-	
-
 	@ManyToOne()
 	@JoinColumn(name = "city_id")
 	private City city;
 
-	
-	
-	
 	public Long getId_address() {
 		return id_address;
 	}
@@ -43,8 +39,6 @@ public class Address {
 	public void setId_address(Long id_address) {
 		this.id_address = id_address;
 	}
-
-
 
 	public Long getId() {
 		return id_address;
@@ -72,14 +66,6 @@ public class Address {
 		this.city = city;
 	}
 	
-	public Request getRequest() {
-		return request;
-	}
-
-	public void setRequest(Request request) {
-		this.request = request;
-	}
-
 
 
 	

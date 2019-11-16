@@ -42,7 +42,7 @@ public class Association {
 		
 		@NotNull
 		@OneToOne(cascade = CascadeType.ALL)
-		@JoinColumn(name = "id_address", referencedColumnName = "id_address")
+//		@JoinColumn(name = "id_address", referencedColumnName = "id_address")
 		private Address address_association;
 		
 		
