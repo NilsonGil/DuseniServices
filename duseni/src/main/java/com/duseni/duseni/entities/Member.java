@@ -17,7 +17,7 @@ public class Member {
 	
 	// IdentificationCard =  cedula
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_users")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_member")
 	private Long IdentificationCard;
 	
 	@NotNull

@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 public class Product {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_users")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_product")
 	private Long id_product;
 
 	@NotNull
