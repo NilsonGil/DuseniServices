@@ -15,8 +15,8 @@ public class AddressSerializer implements JsonSerializer<Address> {
 	public JsonElement serialize(Address adrress, Type typeOfSrc, JsonSerializationContext context) {
 		// TODO Auto-generated method stub
 		    JsonObject jsonObject = new JsonObject();
-	        jsonObject.addProperty("id_address", adrress.getId());
-	        jsonObject.addProperty("descripcion", adrress.getDescripcion());
+//	        jsonObject.addProperty("id_address", adrress.getId());
+//	        jsonObject.addProperty("descripcion", adrress.getDescripcion());
 	        return jsonObject;
 	}
 }

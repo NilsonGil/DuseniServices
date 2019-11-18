@@ -3,6 +3,8 @@ package com.duseni.duseni.entities;
 import java.sql.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.validation.constraints.NotNull;
@@ -21,6 +23,7 @@ public class Contribution {
 	 * id compuesto entre el id del miembro y el del id del producto
 	 */
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "contador_id_contribution")
 	private long idMember;
 	/**
 	 * id compuesto entre el id del miembro y el del id del producto
@@ -80,15 +83,4 @@ public class Contribution {
 		return "Contribute [idMember=" + idMember + ", idRequest=" + idRequest + ", quantity=" + quantity
 				+ ", dateOrder=" + dateOrder + "]";
 	}
-
-	
-	
-
-	
-	
-	
-	
-	
-	
-
 }

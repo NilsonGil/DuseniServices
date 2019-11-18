@@ -14,9 +14,9 @@ public class MemberSerializer implements JsonSerializer<Member> {
 	public JsonElement serialize(Member member, Type typeOfSrc, JsonSerializationContext context) {
 		// TODO Auto-generated method stub
 		    JsonObject jsonObject = new JsonObject();
-	        jsonObject.addProperty("id", member.getIdentificationCard());
-	        jsonObject.addProperty("Nombre", member.getFirstName());
-	        jsonObject.addProperty("Adrress", member.getAddress().getDescripcion());
+//	        jsonObject.addProperty("id", member.getIdentificationCard());
+//	        jsonObject.addProperty("Nombre", member.getFirstName());
+//	        jsonObject.addProperty("Adrress", member.getAddress().getDescripcion());
 	        return jsonObject;
 	}
 

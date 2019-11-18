@@ -1,7 +1,6 @@
 package com.duseni.duseni.entities;
 
-import java.sql.Date;
-
+import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import com.google.gson.annotations.SerializedName;
@@ -18,104 +20,111 @@ import com.google.gson.annotations.SerializedName;
 public class Member {
 	
 	
-	// IdentificationCard =  cedula
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_member")
-	private Long IdentificationCard;
+	private Long cedula_member;
 	
 	@NotNull
-	private String  firstName;
+	private String  first_name;
 	
-	private String  secondtName;
+	private String  second_name;
 	
 	@NotNull
-	private String  firstLastName;
-	@NotNull
-	private String  secondtLastName;
-	@NotNull
-	private String email;
-	@NotNull
-	private String password;
+	private String  first_las_Name;
 	
-	private String imageProfile;
+	private String  second_last_Name;
+	
+	@NotNull
+	private String email_member;
+	@NotNull
+	private String password_member;
+	
+	private String image_profile_member;
+	
 	@NotNull
 	private Character gender;
 	
-	private Boolean isActiveUser;
 	@NotNull
-	private int phoneNumberOne;
-	private int phoneNumberTwo;
+	private boolean is_active_user;
+	
 	@NotNull
+	private int phone_number;
+	
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfBirth;
 	
 	@NotNull
-	@OneToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "id_address", referencedColumnName = "id_address")
-	@SerializedName("address")
+	@OneToOne
 	private Address address;
 
-	public Long getIdentificationCard() {
-		return IdentificationCard;
+	@ManyToOne
+	private Association association;
+	
+
+	/********* GETTERS Y SETTERS *******/
+
+	public Long getCedula_member() {
+		return cedula_member;
 	}
 
-	public void setIdentificationCard(Long identificationCard) {
-		IdentificationCard = identificationCard;
+	public void setCedula_member(Long cedula_member) {
+		this.cedula_member = cedula_member;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getFirst_name() {
+		return first_name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirst_name(String first_name) {
+		this.first_name = first_name;
 	}
 
-	public String getSecondtName() {
-		return secondtName;
+	public String getSecond_name() {
+		return second_name;
 	}
 
-	public void setSecondtName(String secondtName) {
-		this.secondtName = secondtName;
+	public void setSecond_name(String second_name) {
+		this.second_name = second_name;
 	}
 
-	public String getFirstLastName() {
-		return firstLastName;
+	public String getFirst_las_Name() {
+		return first_las_Name;
 	}
 
-	public void setFirstLastName(String firstLastName) {
-		this.firstLastName = firstLastName;
+	public void setFirst_las_Name(String first_las_Name) {
+		this.first_las_Name = first_las_Name;
 	}
 
-	public String getSecondtLastName() {
-		return secondtLastName;
+	public String getSecond_last_Name() {
+		return second_last_Name;
 	}
 
-	public void setSecondtLastName(String secondtLastName) {
-		this.secondtLastName = secondtLastName;
+	public void setSecond_last_Name(String second_last_Name) {
+		this.second_last_Name = second_last_Name;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getEmail_member() {
+		return email_member;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmail_member(String email_member) {
+		this.email_member = email_member;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPassword_member() {
+		return password_member;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassword_member(String password_member) {
+		this.password_member = password_member;
 	}
 
-	public String getImageProfile() {
-		return imageProfile;
+	public String getImage_profile_member() {
+		return image_profile_member;
 	}
 
-	public void setImageProfile(String imageProfile) {
-		this.imageProfile = imageProfile;
+	public void setImage_profile_member(String image_profile_member) {
+		this.image_profile_member = image_profile_member;
 	}
 
 	public Character getGender() {
@@ -126,28 +135,20 @@ public class Member {
 		this.gender = gender;
 	}
 
-	public Boolean getIsActiveUser() {
-		return isActiveUser;
+	public boolean isIs_active_user() {
+		return is_active_user;
 	}
 
-	public void setIsActiveUser(Boolean isActiveUser) {
-		this.isActiveUser = isActiveUser;
+	public void setIs_active_user(boolean is_active_user) {
+		this.is_active_user = is_active_user;
 	}
 
-	public int getPhoneNumberOne() {
-		return phoneNumberOne;
+	public int getPhone_number() {
+		return phone_number;
 	}
 
-	public void setPhoneNumberOne(int phoneNumberOne) {
-		this.phoneNumberOne = phoneNumberOne;
-	}
-
-	public int getPhoneNumberTwo() {
-		return phoneNumberTwo;
-	}
-
-	public void setPhoneNumberTwo(int phoneNumberTwo) {
-		this.phoneNumberTwo = phoneNumberTwo;
+	public void setPhone_number(int phone_number) {
+		this.phone_number = phone_number;
 	}
 
 	public Date getDateOfBirth() {
@@ -166,21 +167,12 @@ public class Member {
 		this.address = address;
 	}
 
-	@Override
-	public String toString() {
-		return "Member [IdentificationCard=" + IdentificationCard + ", firstName=" + firstName + ", secondtName="
-				+ secondtName + ", firstLastName=" + firstLastName + ", secondtLastName=" + secondtLastName + ", email="
-				+ email + ", password=" + password + ", imageProfile=" + imageProfile + ", gender=" + gender
-				+ ", isActiveUser=" + isActiveUser + ", phoneNumberOne=" + phoneNumberOne + ", phoneNumberTwo="
-				+ phoneNumberTwo + ", dateOfBirth=" + dateOfBirth + ", address=" + address + "]";
+	public Association getAssociation() {
+		return association;
 	}
 
+	public void setAssociation(Association association) {
+		this.association = association;
+	}
 	
-	
-	
-	
-	
-	
-	
-
 }

@@ -1,116 +1,81 @@
 package com.duseni.duseni.entities;
 
-import java.sql.Date;
-import java.util.List;
-
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
-
 @Entity
 public class Association {
+
+	@Id
+	private Long id_association;
+
+	@NotNull
+	private String name_association;
+
+	@NotNull
+	private String email_admin;
+
+	@NotNull
+	private String password_admin;
+
+	private String image_profile_association;
+
+	@NotNull
+	@OneToOne(orphanRemoval = true, cascade = CascadeType.ALL)
+	private Address address;
+
+	/********* GETTERS Y SETTERS *******/
 	
 	
-	// IdentificationCard =  cedula
-		@Id
-		@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_users")
-		@Column(name = "id_association")
-		private Long IdentificationCard;
-		
-		@NotNull
-		private String  name;
-	
-		@NotNull
-		private String email;
-		@NotNull
-		private String password;
-		
-		private String imageProfile;
-		
-				
-		@OneToMany
-		@JoinColumn(name = "products") // we need to duplicate the physical information
-		private List<Product> products;
-		
-		@NotNull
-		@OneToOne(cascade = CascadeType.ALL)
-//		@JoinColumn(name = "id_address", referencedColumnName = "id_address")
-		private Address address_association;
-		
-		
-		public Long getIdentificationCard() {
-			return IdentificationCard;
-		}
+	public Long getId_association() {
+		return id_association;
+	}
 
+	public void setId_association(Long id_association) {
+		this.id_association = id_association;
+	}
 
-		public void setIdentificationCard(Long identificationCard) {
-			IdentificationCard = identificationCard;
-		}
+	public String getName_association() {
+		return name_association;
+	}
 
+	public void setName_association(String name_association) {
+		this.name_association = name_association;
+	}
 
-		public String getName() {
-			return name;
-		}
+	public String getEmail_admin() {
+		return email_admin;
+	}
 
+	public void setEmail_admin(String email_admin) {
+		this.email_admin = email_admin;
+	}
 
-		public void setName(String name) {
-			this.name = name;
-		}
+	public String getPassword_admin() {
+		return password_admin;
+	}
 
+	public void setPassword_admin(String password_admin) {
+		this.password_admin = password_admin;
+	}
 
-		public String getEmail() {
-			return email;
-		}
+	public String getImage_profile_association() {
+		return image_profile_association;
+	}
 
+	public void setImage_profile_association(String image_profile_association) {
+		this.image_profile_association = image_profile_association;
+	}
 
-		public void setEmail(String email) {
-			this.email = email;
-		}
+	public Address getAddress() {
+		return address;
+	}
 
-
-		public String getPassword() {
-			return password;
-		}
-
-
-		public void setPassword(String password) {
-			this.password = password;
-		}
-
-
-		public String getImageProfile() {
-			return imageProfile;
-		}
-
-
-		public void setImageProfile(String imageProfile) {
-			this.imageProfile = imageProfile;
-		}
-
-
-
-
-
-		public List<Product> getProducts() {
-			return products;
-		}
-
-
-		public void setProducts(List<Product> products) {
-			this.products = products;
-		}
-
-
-		
-		
-
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
 }
