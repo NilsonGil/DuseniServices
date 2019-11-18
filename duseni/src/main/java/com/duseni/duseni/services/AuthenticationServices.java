@@ -1,9 +1,6 @@
-package com.duseni.duseni.controller;
+package com.duseni.duseni.services;
 
-import java.awt.Menu;
 import java.util.Collection;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,21 +14,20 @@ import com.duseni.duseni.repository.MemberRepository;
 
 @CrossOrigin (origins = { "http://localhost:4200" })
 @RestController
-public class AuthenticationController {
+public class AuthenticationServices {
 	
 	
 	@Autowired
 	private  MemberRepository	memberRepository;
-	
-	
-
 	
 //	@GetMapping(value = "/authenticationMember/{email}/{password}")
 //	public ResponseEntity<Collection<Member>> authenticateForumUser(@PathVariable String email,	@PathVariable String password) {
 //		Optional<Member> member = memberRepository.authentication(email, password);
 //		return ResponseEntity.ok().body(member);
 //	}
-	
+	/*
+	 * AUTENTICA AL ADMIN
+	 */
 	@GetMapping(value = "/authenticationMember2/{email}/{password}")
 	public ResponseEntity<Collection<Member>> authenticateForumUser2(@PathVariable String email,	@PathVariable String password) {
 		System.out.println("llgeo" + email + "- "+ password);

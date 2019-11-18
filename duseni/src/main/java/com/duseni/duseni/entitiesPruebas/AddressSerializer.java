@@ -3,7 +3,6 @@ package com.duseni.duseni.entitiesPruebas;
 import java.lang.reflect.Type;
 
 import com.duseni.duseni.entities.Address;
-import com.duseni.duseni.entities.Member;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
