@@ -1,6 +1,8 @@
 package com.duseni.duseni.controller;
 
+import java.awt.Menu;
 import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,13 +26,25 @@ public class AuthenticationController {
 	
 
 	
-	@GetMapping(value = "/authenticationMember/{email}/{password}")
-	public ResponseEntity<Collection<Member>> authenticateForumUser(@PathVariable String email,	@PathVariable String password) {
+//	@GetMapping(value = "/authenticationMember/{email}/{password}")
+//	public ResponseEntity<Collection<Member>> authenticateForumUser(@PathVariable String email,	@PathVariable String password) {
+//		Optional<Member> member = memberRepository.authentication(email, password);
+//		return ResponseEntity.ok().body(member);
+//	}
+	
+	@GetMapping(value = "/authenticationMember2/{email}/{password}")
+	public ResponseEntity<Collection<Member>> authenticateForumUser2(@PathVariable String email,	@PathVariable String password) {
+		System.out.println("llgeo" + email + "- "+ password);
 		Collection<Member> member = memberRepository.authentication(email, password);
+		
+		System.out.println(member + "");
+//		if(member.get() != null) {
+//			return true;
+//		}
 		return ResponseEntity.ok().body(member);
 	}
 	
-	
-	
+
+
 
 }
