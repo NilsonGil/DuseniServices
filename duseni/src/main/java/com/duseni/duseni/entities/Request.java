@@ -26,11 +26,11 @@ public class Request {
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date limit_date_request;
-
+	@NotNull
+	private double required_quantity;
 
 	/********* GETTERS Y SETTERS *******/
-	
-	
+
 	@NotNull
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private Address delivery_address;
@@ -108,4 +108,13 @@ public class Request {
 	public void setPrice_per_unit_to_pay(double price_per_unit_to_pay) {
 		this.price_per_unit_to_pay = price_per_unit_to_pay;
 	}
+
+	public double getRequired_Quantity() {
+		return required_quantity;
+	}
+
+	public void setRequired_Quantity(double quantity) {
+		this.required_quantity = quantity;
+	}
+
 }
