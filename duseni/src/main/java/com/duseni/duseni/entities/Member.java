@@ -20,7 +20,7 @@ public class Member {
 	private String  second_name;
 	
 	@NotNull
-	private String  first_las_Name;
+	private String  first_last_Name;
 	
 	private String  second_last_Name;
 	
@@ -78,11 +78,11 @@ public class Member {
 	}
 
 	public String getFirst_las_Name() {
-		return first_las_Name;
+		return first_last_Name;
 	}
 
 	public void setFirst_las_Name(String first_las_Name) {
-		this.first_las_Name = first_las_Name;
+		this.first_last_Name = first_las_Name;
 	}
 
 	public String getSecond_last_Name() {
