@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -21,10 +19,8 @@ public class Request {
 	@NotNull
 	private String description;
 	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date creation_date_request;
 	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date limit_date_request;
 	@NotNull
 	private double required_quantity;
