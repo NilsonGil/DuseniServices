@@ -1,20 +1,13 @@
 package com.duseni.duseni.entities;
 
 import java.util.Date;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-
-import com.google.gson.annotations.SerializedName;
 
 @Entity
 public class Member {
@@ -47,7 +40,7 @@ public class Member {
 	private boolean is_active_user;
 	
 	@NotNull
-	private int phone_number;
+	private Long phone_number;
 	
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
@@ -143,11 +136,11 @@ public class Member {
 		this.is_active_user = is_active_user;
 	}
 
-	public int getPhone_number() {
+	public Long getPhone_number() {
 		return phone_number;
 	}
 
-	public void setPhone_number(int phone_number) {
+	public void setPhone_number(Long phone_number) {
 		this.phone_number = phone_number;
 	}
 

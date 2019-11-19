@@ -16,6 +16,7 @@ public class AddressSerializer implements JsonSerializer<Address> {
 		    JsonObject jsonObject = new JsonObject();
 //	        jsonObject.addProperty("id_address", adrress.getId());
 //	        jsonObject.addProperty("descripcion", adrress.getDescripcion());
+		    
 	        return jsonObject;
 	}
 }
