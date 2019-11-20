@@ -3,63 +3,44 @@ package com.duseni.duseni.entities;
 import java.sql.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.validation.constraints.NotNull;
 
 import com.duseni.duseni.entitiesPK.ContributionPK;
 
-// clase de aportes
-
-
 @Entity
 @IdClass(value = ContributionPK.class)
 public class Contribution {
-	
-	
-	/**
-	 * id compuesto entre el id del miembro y el del id del producto
-	 */
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "contador_id_contribution")
-	private long idMember;
-	/**
-	 * id compuesto entre el id del miembro y el del id del producto
-	 */
+	private long id_member;
+
 	@Id
-	private long idRequest;
+	private long id_request;
 
-	/**
-	 * cantidad de productos del aporte
-	 */
 	@NotNull
-	private int  quantity;
-	
-	
-	/**
-	 * Dia en que se dio el aporte
-	 */
+	private int quantity;
+
 	@NotNull
-	private Date dateOrder;
-	
+	private Date create_contribution_date;
 
-	
-	public long getIdMember() {
-		return idMember;
+	/********* GETTERS Y SETTERS *******/
+
+	public long getId_member() {
+		return id_member;
 	}
 
-	public void setIdMember(long idMember) {
-		this.idMember = idMember;
+	public void setId_member(long id_member) {
+		this.id_member = id_member;
 	}
 
-	public long getIdRequest() {
-		return idRequest;
+	public long getId_request() {
+		return id_request;
 	}
 
-	public void setIdRequest(long idRequest) {
-		this.idRequest = idRequest;
+	public void setId_request(long id_request) {
+		this.id_request = id_request;
 	}
 
 	public int getQuantity() {
@@ -70,17 +51,11 @@ public class Contribution {
 		this.quantity = quantity;
 	}
 
-	public Date getDateOrder() {
-		return dateOrder;
+	public Date getCreate_contribution_date() {
+		return create_contribution_date;
 	}
 
-	public void setDateOrder(Date dateOrder) {
-		this.dateOrder = dateOrder;
-	}
-
-	@Override
-	public String toString() {
-		return "Contribute [idMember=" + idMember + ", idRequest=" + idRequest + ", quantity=" + quantity
-				+ ", dateOrder=" + dateOrder + "]";
+	public void setCreate_contribution_date(Date create_contribution_date) {
+		this.create_contribution_date = create_contribution_date;
 	}
 }

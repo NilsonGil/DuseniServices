@@ -1,9 +1,6 @@
 package com.duseni.duseni.services;
 
-import java.util.Optional;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,7 +24,7 @@ public class ContributionServices {
 	// ****** CRUD MIEMBROS *******//
 
 	/*
-	 * AGREGA UN NUEVO MIEBRO
+	 * AGREGA UN NUEVO MIEBRO [INCOMPLETOO]
 	 */
 	@PostMapping(value = "/addContribution")
 	public String addContribution(@Valid @RequestBody Contribution contribution) {
@@ -37,10 +34,9 @@ public class ContributionServices {
 	/*
 	 * BUSCAR MIEMBRO POR ID
 	 */
-	@GetMapping(value = "/contribution/{id}")
-	public String getContribution(@PathVariable Long id) {
-		Optional<Contribution> contributionFound = contributionRepository.findById(id);
-		return JsonManager.toJson(contributionFound.get());
+	@GetMapping(value = "/contribution/{idMember}/{idRequest}")
+	public String getContribution(@PathVariable Long idMember, @PathVariable Long idRequest) {
+		return JsonManager.toJson(contributionRepository.findByCompositeId(idMember, idRequest));
 	}
 
 	/*
@@ -52,11 +48,16 @@ public class ContributionServices {
 	}
 
 	/*
-	 * ELIMINA UN MIEMBRO POR ID
+	 * ELIMINA UN MIEMBRO POR ID_MEMBER y por ID_REQUEST
 	 */
-	@DeleteMapping(value = "/removeContribution/{id}")
-	public void removeContribution(@PathVariable Long id) {
-		contributionRepository.deleteById(id);
+	@DeleteMapping(value = "/removeContribution/{idMember}/{idRequest}")
+	public void removeContribution(@PathVariable Long idMember, @PathVariable Long idRequest){
+		Contribution contributionFound = new Contribution();
+		contributionFound.setId_member(idMember);
+		contributionFound.setId_request(idRequest);
+		if (!contributionRepository.findByCompositeId(idMember, idRequest).isEmpty()) {
+			contributionRepository.delete(contributionFound);
+		}
 	}
 
 	// ****** CONSULTAS DIFERENTES *******//
@@ -64,8 +65,20 @@ public class ContributionServices {
 	/*
 	 * OBTIENE TODOS LOS MIEMBROS
 	 */
-	@GetMapping(value = "/getAllContribution")
+	@GetMapping(value = "/allContributions")
 	public String getAllContribution() {
 		return JsonManager.toJson(contributionRepository.findAll());
 	}
+
+//	@GetMapping(value = "/addRemoveDiscussionToFavorites/{idDiscussion}/{idUser}")
+//	public void addRemoveDiscussionToFavorites(@PathVariable Long idDiscussion, @PathVariable Long idUser) {
+//		UserFavDiscussion ufd = new UserFavDiscussion();
+//		ufd.setIdForumDiscussion(idDiscussion);
+//		ufd.setIdUser(idUser);
+//		if (!userFavDiscussionsRepository.finByCompositeId(idDiscussion, idUser).isEmpty()) {
+//			userFavDiscussionsRepository.delete(ufd);
+//		} else {
+//			userFavDiscussionsRepository.save(ufd);
+//		}
+//	}
 }
