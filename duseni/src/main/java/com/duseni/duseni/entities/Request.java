@@ -16,17 +16,19 @@ public class Request {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "contador_id_request")
 	private Long id_request;
+	
 	@NotNull
 	private String description;
+	
 	@NotNull
 	private Date creation_date_request;
+	
 	@NotNull
 	private Date limit_date_request;
+	
 	@NotNull
 	private double required_quantity;
-
-	/********* GETTERS Y SETTERS *******/
-
+	
 	@NotNull
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private Address delivery_address;
@@ -41,6 +43,8 @@ public class Request {
 	@NotNull
 	private double price_per_unit_to_pay;
 
+	/********* GETTERS Y SETTERS *******/
+	
 	public Long getId_request() {
 		return id_request;
 	}
