@@ -28,7 +28,7 @@ public class MemberServices {
 	// ****** CRUD MIEMBROS *******//
 	
 	/*
-	 * AGREGA UN NUEVO MIEBRO
+	 * AGREGA UN NUEVO MIEMBRO
 	 */
 	@PostMapping (value = "/addMember")
 	public String addMember(@Valid @RequestBody Member member) {
