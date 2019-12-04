@@ -1,8 +1,7 @@
 package com.duseni.duseni.entities;
 
-import java.util.Date;
+import java.sql.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +11,6 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 public class Request {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "contador_id_request")
 	private Long id_request;
@@ -29,9 +27,9 @@ public class Request {
 	@NotNull
 	private double required_quantity;
 	
-	@NotNull
-	@OneToOne(cascade = CascadeType.PERSIST)
-	private Address delivery_address;
+//	@NotNull
+//	@OneToOne(cascade = CascadeType.PERSIST)
+//	private Address delivery_address;
 
 	@NotNull
 	@OneToOne
@@ -42,9 +40,11 @@ public class Request {
 
 	@NotNull
 	private double price_per_unit_to_pay;
-
-	/********* GETTERS Y SETTERS *******/
 	
+	@NotNull
+	@OneToOne
+	private Address address_request;
+
 	public Long getId_request() {
 		return id_request;
 	}
@@ -77,12 +77,12 @@ public class Request {
 		this.limit_date_request = limit_date_request;
 	}
 
-	public Address getDelivery_address() {
-		return delivery_address;
+	public double getRequired_quantity() {
+		return required_quantity;
 	}
 
-	public void setDelivery_address(Address delivery_address) {
-		this.delivery_address = delivery_address;
+	public void setRequired_quantity(double required_quantity) {
+		this.required_quantity = required_quantity;
 	}
 
 	public Product getProduct() {
@@ -109,12 +109,13 @@ public class Request {
 		this.price_per_unit_to_pay = price_per_unit_to_pay;
 	}
 
-	public double getRequired_Quantity() {
-		return required_quantity;
+	public Address getAddress_request() {
+		return address_request;
 	}
 
-	public void setRequired_Quantity(double quantity) {
-		this.required_quantity = quantity;
+	public void setAddress_request(Address address_request) {
+		this.address_request = address_request;
 	}
-
+	
+	
 }
