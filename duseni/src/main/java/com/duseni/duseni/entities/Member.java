@@ -1,6 +1,8 @@
 package com.duseni.duseni.entities;
 
 import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -20,9 +22,9 @@ public class Member {
 	private String  second_name;
 	
 	@NotNull
-	private String  first_last_Name;
+	private String  first_last_name;
 	
-	private String  second_last_Name;
+	private String  second_last_name;
 	
 	@NotNull
 	private String email_member;
@@ -44,14 +46,11 @@ public class Member {
 	private Date dateOfBirth;
 	
 	@NotNull
-	@OneToOne
+	@OneToOne(orphanRemoval = true, cascade = CascadeType.ALL)
 	private Address address;
 
 	@ManyToOne
 	private Association association;
-	
-
-	/********* GETTERS Y SETTERS *******/
 
 	public Long getCedula_member() {
 		return cedula_member;
@@ -77,20 +76,20 @@ public class Member {
 		this.second_name = second_name;
 	}
 
-	public String getFirst_las_Name() {
-		return first_last_Name;
+	public String getFirst_last_name() {
+		return first_last_name;
 	}
 
-	public void setFirst_las_Name(String first_las_Name) {
-		this.first_last_Name = first_las_Name;
+	public void setFirst_last_name(String first_last_name) {
+		this.first_last_name = first_last_name;
 	}
 
-	public String getSecond_last_Name() {
-		return second_last_Name;
+	public String getSecond_last_name() {
+		return second_last_name;
 	}
 
-	public void setSecond_last_Name(String second_last_Name) {
-		this.second_last_Name = second_last_Name;
+	public void setSecond_last_name(String second_last_name) {
+		this.second_last_name = second_last_name;
 	}
 
 	public String getEmail_member() {
@@ -164,5 +163,7 @@ public class Member {
 	public void setAssociation(Association association) {
 		this.association = association;
 	}
+	
+
 	
 }
