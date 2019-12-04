@@ -17,7 +17,7 @@ import com.duseni.duseni.entities.Request;
 import com.duseni.duseni.persistence.JsonManager;
 import com.duseni.duseni.repository.RequestRepository;
 
-@CrossOrigin(origins = { "http://localhost:4200" })
+@CrossOrigin(origins = { "http://localhost:4200","http://localhost:8100"  })
 @RestController
 public class RequestServices {
 	@Autowired
@@ -64,6 +64,7 @@ public class RequestServices {
 	@GetMapping(value = "/allRequests")
 	public String getAllRequests() {
 		return JsonManager.toJson(requestRepository.findAll());
+		//return JsonManager.getPedios(requestRepository.findAll());
 	}
 
 }
