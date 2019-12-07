@@ -16,7 +16,7 @@ public class RequestSerializer implements JsonSerializer<Request> {
 		 JsonObject jsonObject = new JsonObject();
 	        jsonObject.addProperty("id_request", request.getId_request());
             jsonObject.addProperty("description", request.getDescription());
-            jsonObject.addProperty("required_quantity", request.getRequired_Quantity());
+            jsonObject.addProperty("required_quantity", request.getRequired_quantity());
 	        return jsonObject;
 	}
 

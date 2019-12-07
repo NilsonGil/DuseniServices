@@ -1,10 +1,13 @@
 package com.duseni.duseni.services;
 
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,14 +31,14 @@ public class AddressServices {
 		return JsonManager.toJson(addressRepository.save(address));
 	}
 
-//	/*
-//	 * BUSCAR MIEMBRO POR ID
-//	 */
-//	@GetMapping(value = "/member/{id}")
-//	public String getMember(@PathVariable Long id) {
-//		Optional<Member> m = memberRepository.findById(id);
-//		return JsonManager.toJson(m.get());
-//	}
+	/*
+	 * BUSCAR ADDRESS POR ID
+	 */
+	@GetMapping(value = "/address/{id}")
+	public String getAddress(@PathVariable Long id) {
+		Optional<Address> a = addressRepository.findById(id);
+		return JsonManager.toJson(a.get());
+	}
 //
 //	/*
 //	 * EDITA UN MIEMBRO

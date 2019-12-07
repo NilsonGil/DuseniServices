@@ -9,7 +9,7 @@ import com.duseni.duseni.entities.Member;
 public interface MemberRepository extends CrudRepository<Member, Long> {
 	
 	@Query(value = "SELECT * FROM duseni.member m where m.email_member=(:email) and m.password_member = (:password)", nativeQuery = true)
-	Collection<Member> authentication(String  email, String password);
+	Collection<Member> authenticationMember(String  email, String password);
 	
 	
 	

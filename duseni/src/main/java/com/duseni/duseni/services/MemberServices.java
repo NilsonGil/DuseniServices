@@ -32,6 +32,7 @@ public class MemberServices {
 	 */
 	@PostMapping (value = "/addMember")
 	public String addMember(@Valid @RequestBody Member member) {
+		System.out.println(member.getFirst_last_name());
 		return JsonManager.toJson(memberRepository.save(member));
 	}
 	
