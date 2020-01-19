@@ -46,8 +46,8 @@ public class RequestServices {
 	 * EDITA UN MIEMBRO
 	 */
 	@PutMapping(value = "/editRequest")
-	public String editRequest(@Valid @RequestBody Request member) {
-		return JsonManager.toJson(requestRepository.save(member));
+	public String editRequest(@Valid @RequestBody Request request) {
+		return JsonManager.toJson(requestRepository.save(request));
 	}
 	
 	/*
