@@ -24,7 +24,7 @@ public class Association {
 	private String image_profile_association;
 
 	@NotNull
-	@OneToOne(orphanRemoval = true, cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 
 	/********* GETTERS Y SETTERS *******/

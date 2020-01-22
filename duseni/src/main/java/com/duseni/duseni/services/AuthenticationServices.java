@@ -1,6 +1,8 @@
 package com.duseni.duseni.services;
 
 import java.util.Collection;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -10,11 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.duseni.duseni.entities.Association;
 import com.duseni.duseni.entities.Member;
+import com.duseni.duseni.persistence.JsonManager;
 import com.duseni.duseni.repository.AssociationRepository;
 import com.duseni.duseni.repository.MemberRepository;
 
 
-@CrossOrigin (origins = { "http://localhost:4200" })
+@CrossOrigin (origins = { "http://localhost:4200", "http://localhost:8100", "http://localhost:8200"  })
 @RestController
 public class AuthenticationServices {
 	
@@ -31,11 +34,10 @@ public class AuthenticationServices {
 //	}
 	
 	/*
-	 * AUTENTICA AL ADMIN
+	 * AUTENTICA AL ADMIN  
 	 */
 	@GetMapping(value = "/authenticationAdmin/{email}/{password}")
 	public ResponseEntity<Collection<Association>> authenticationAdmin(@PathVariable String email,	@PathVariable String password) {
-		System.out.println("llegó --> " + email + " *** "+ password);
 		Collection<Association> association = associationRepository.authenticationAdmin(email, password);
 		
 		return ResponseEntity.ok().body(association);
@@ -45,15 +47,9 @@ public class AuthenticationServices {
 	 * AUTENTICA AL MIEMBRO
 	 */
 	@GetMapping(value = "/authenticationMember/{email}/{password}")
-	public ResponseEntity<Collection<Member>> authenticateMember(@PathVariable String email,	@PathVariable String password) {
-		System.out.println("llegó --> " + email + " *** "+ password);
-		Collection<Member> member = memberRepository.authenticationMember(email, password);
-		
-		System.out.println(member + "");
-//		if(member.get() != null) {
-//			return true;
-//		}
-		return ResponseEntity.ok().body(member);
+	public String authenticateMember(@PathVariable String email,	@PathVariable String password) {
+		Optional<Member> member = memberRepository.authenticationMember(email, password);
+		return JsonManager.toJson(member.get());
 	}
 	
 

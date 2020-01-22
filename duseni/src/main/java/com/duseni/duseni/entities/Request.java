@@ -2,6 +2,7 @@ package com.duseni.duseni.entities;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +30,7 @@ public class Request {
 	
 //	@NotNull
 //	@OneToOne(cascade = CascadeType.PERSIST)
-//	private Address delivery_address;
+//    private Address delivery_address;
 
 	@NotNull
 	@OneToOne
@@ -42,7 +43,7 @@ public class Request {
 	private double price_per_unit_to_pay;
 	
 	@NotNull
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private Address address_request;
 
 	public Long getId_request() {
