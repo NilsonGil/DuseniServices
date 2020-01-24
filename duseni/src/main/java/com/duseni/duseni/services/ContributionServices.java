@@ -1,5 +1,7 @@
 package com.duseni.duseni.services;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.duseni.duseni.entities.Contribution;
+import com.duseni.duseni.entities.Member;
 import com.duseni.duseni.persistence.JsonManager;
 import com.duseni.duseni.repository.ContributionRepository;
 
@@ -28,10 +31,25 @@ public class ContributionServices {
 	 */
 	@PostMapping(value = "/addContribution")
 	public String addContribution(@Valid @RequestBody Contribution contribution) {
-		System.out.println("++++++++++++++++++++++++");
 		return JsonManager.toJson(contributionRepository.save(contribution));
 	}
 
+	
+	@GetMapping(value = "/contribucion/{idMember}/{idPedido}")
+	public String getContribucion(@PathVariable Long idMember,@PathVariable Long idPedido)  {
+		try {
+			Optional<Contribution> contribucion =  contributionRepository.findByCompositeId(idMember,idPedido);
+			return JsonManager.toJson(contribucion.get());
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("    ----- Error");
+		}
+		
+		return "null";
+	
+		
+	}
+	
 	
 
 }
