@@ -17,7 +17,7 @@ import com.duseni.duseni.entities.Request;
 import com.duseni.duseni.persistence.JsonManager;
 import com.duseni.duseni.repository.RequestRepository;
 
-@CrossOrigin(origins = { "http://localhost:4200","http://localhost:8100"  })
+@CrossOrigin(origins = { "http://localhost:4200","http://localhost:8100" ,"http://localhost:8200" })
 @RestController
 public class RequestServices {
 	@Autowired

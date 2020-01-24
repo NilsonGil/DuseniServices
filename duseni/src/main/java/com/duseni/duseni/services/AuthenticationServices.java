@@ -3,11 +3,16 @@ package com.duseni.duseni.services;
 import java.util.Collection;
 import java.util.Optional;
 
+import javax.persistence.PostUpdate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.duseni.duseni.entities.Association;
@@ -43,6 +48,18 @@ public class AuthenticationServices {
 		return ResponseEntity.ok().body(association);
 	}
 	
+	@PutMapping(value = "/cambiarClave/{cedula}/{nuevaClave}")
+	public @ResponseBody String cambiarClave(@PathVariable long cedula, @PathVariable String nuevaClave) {
+		Optional<Member> member = memberRepository.getMember(cedula);
+		Member m = member.get();
+		m.setPassword_member(nuevaClave);
+		System.out.println(m.getPassword_member());
+		memberRepository.save(m);
+	//	memberRepository.cambiarClave(cedula, nuevaClave);
+		return "Updated";
+
+	}
+
 	/*
 	 * AUTENTICA AL MIEMBRO
 	 */
