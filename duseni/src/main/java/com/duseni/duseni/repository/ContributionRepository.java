@@ -17,4 +17,6 @@ public interface ContributionRepository extends CrudRepository<Contribution, Lon
 	@Query(value = "SELECT * FROM  duseni.contribution", nativeQuery = true)
 	Collection<Contribution> findAll(long id_member, long id_request);
 	
+	
+	
 }

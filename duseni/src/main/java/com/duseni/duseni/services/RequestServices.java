@@ -67,4 +67,8 @@ public class RequestServices {
 		//return JsonManager.getPedios(requestRepository.findAll());
 	}
 
+	@GetMapping(value = "/allRequestsOfContributionMember/{cedulaMember}")
+	public String getAllRequestsOfContributionMember(@PathVariable Long cedulaMember) {
+		return JsonManager.toJson(requestRepository.getPedidosContribucionesMember(cedulaMember));
+	}
 }
