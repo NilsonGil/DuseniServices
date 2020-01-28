@@ -17,7 +17,7 @@ import com.duseni.duseni.entities.Request;
 import com.duseni.duseni.persistence.JsonManager;
 import com.duseni.duseni.repository.RequestRepository;
 
-@CrossOrigin(origins = { "http://localhost:4200","http://localhost:8100" ,"http://localhost:8200" })
+@CrossOrigin(origins = { "*" })
 @RestController
 public class RequestServices {
 	@Autowired
@@ -71,4 +71,11 @@ public class RequestServices {
 	public String getAllRequestsOfContributionMember(@PathVariable Long cedulaMember) {
 		return JsonManager.toJson(requestRepository.getPedidosContribucionesMember(cedulaMember));
 	}
+	
+	
+	@GetMapping(value = "/allContributionByProduct/{cedulaMember}")
+	public String getTotalAportesPorProducto(@PathVariable Long cedulaMember) {
+		return JsonManager.toJson(requestRepository.getTotalAportesPorProducto(cedulaMember));
+	}
+	
 }
