@@ -17,6 +17,7 @@ import com.duseni.duseni.entities.Request;
 import com.duseni.duseni.persistence.JsonManager;
 import com.duseni.duseni.repository.RequestRepository;
 
+
 @CrossOrigin(origins = { "*" })
 @RestController
 public class RequestServices {
@@ -76,6 +77,17 @@ public class RequestServices {
 	@GetMapping(value = "/allContributionByProduct/{cedulaMember}")
 	public String getTotalAportesPorProducto(@PathVariable Long cedulaMember) {
 		return JsonManager.toJson(requestRepository.getTotalAportesPorProducto(cedulaMember));
+	}
+	
+	@GetMapping(value = "/totalDineroProductoDeContribucionesPorMes/{cedulaMember}")
+	public String getTotalDineroProductoDeContribucionesPorMes(@PathVariable Long cedulaMember) {
+		return JsonManager.toJson(requestRepository.getTotalDineroProductoDeContribucionesPorMes(cedulaMember));
+	}
+	
+
+	@GetMapping(value = "/totalUnididadesAportadasPorPedido/{idPedido}")
+	public String getTotalUnididadesAportadasPorPedido(@PathVariable Long idPedido) {
+		return JsonManager.toJson(requestRepository.getTotalUnididadesAportadasPorPedido(idPedido));
 	}
 	
 }

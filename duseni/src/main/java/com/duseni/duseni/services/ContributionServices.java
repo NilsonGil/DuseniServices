@@ -51,5 +51,14 @@ public class ContributionServices {
 	}
 	
 	
+	/*
+	 * ELIMINA UN Contribution POR ID
+	 */
+	@DeleteMapping(value = "/removeContribution/{idMember}/{idPedido}")
+	public void removeContibution(@PathVariable Long idMember, @PathVariable Long idPedido) {
+		contributionRepository.delete(idMember,idPedido);
+	}
+	
+	
 
 }

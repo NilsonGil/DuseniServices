@@ -19,7 +19,14 @@ public interface RequestRepository extends CrudRepository<Request, Long> {
 			" (select id_request, quantity FROM duseni.contribution  where  duseni.contribution.id_member = (:cedulaMember)) \r\n" + 
 			" c on  duseni.request.id_request = c.id_request  GROUP BY duseni.request.product_id_product ) aportes join duseni.product on duseni.product.id_product = aportes.product_id_product ", nativeQuery = true)
 	 Iterable<String[]> getTotalAportesPorProducto(Long cedulaMember);
+	 
+	 
+	@Query(value ="select UPPER( Date_format(create_contribution_date ,'%M')) fecha , sum((quantity *price_per_unit_to_pay )) totalResivido from duseni.request join \r\n" + 
+				"(select id_request, quantity, create_contribution_date FROM duseni.contribution  where  duseni.contribution.id_member = (:cedulaMember))\r\n" + 
+				"c on  duseni.request.id_request = c.id_request  where Date_format(create_contribution_date ,'%Y') = YEAR(NOW()) group by fecha", nativeQuery = true)
+	Iterable<String[]> getTotalDineroProductoDeContribucionesPorMes(Long cedulaMember);
 	
-	
+	@Query(value ="SELECT sum(quantity) totalAportado FROM duseni.contribution where duseni.contribution.id_request = (:idPedido)", nativeQuery = true)
+	Iterable<String> getTotalUnididadesAportadasPorPedido(Long idPedido);
 
 }

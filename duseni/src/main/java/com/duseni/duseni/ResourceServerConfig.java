@@ -10,6 +10,8 @@ import org.springframework.core.Ordered;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.web.firewall.HttpFirewall;
+import org.springframework.security.web.firewall.StrictHttpFirewall;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -42,6 +44,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		http
 		.authorizeRequests()
 			.antMatchers(
+//					"/authenticationAdmin/{email}/{password}",
+//					"/authenticationMember/{email}/{password}"
 //					"/addRemoveVideoToFavorites/{idVideo:\\w+}/{idUser:\\d+}",
 //					"/getUserNotifications/{idUser:\\d+}",
 //					"/getViewedUserNotifications/{idUser:\\d+}",
@@ -66,6 +70,13 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 			.configurationSource(corsConfigurationSource());
 	}
 	
+	@Bean
+	public HttpFirewall allowUrlEncodedSlashHttpFirewall() {
+	    StrictHttpFirewall firewall = new StrictHttpFirewall();
+	    firewall.setAllowUrlEncodedSlash(true);    
+	    return firewall;
+	}
+	
 	/**
 	 * Método que genera un Bean que permite soporte para CORS desde el origen de la aplicación angular
 	 * 
@@ -78,8 +89,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		CorsConfiguration configuration = new CorsConfiguration();
 		configuration.setAllowedOrigins(Arrays.asList(
 				"http://localhost:4200",
-				"http://3.14.74.92"
-				)
+				"http://3.14.74.92",
+				"http://localhost:8200",
+				"http://localhost:8100"
+						)
 				);
 		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 		configuration.setAllowCredentials(true);

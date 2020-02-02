@@ -42,10 +42,9 @@ public class AuthenticationServices {
 	 * AUTENTICA AL ADMIN  
 	 */
 	@GetMapping(value = "/authenticationAdmin/{email}/{password}")
-	public ResponseEntity<Collection<Association>> authenticationAdmin(@PathVariable String email,	@PathVariable String password) {
-		Collection<Association> association = associationRepository.authenticationAdmin(email, password);
-		
-		return ResponseEntity.ok().body(association);
+	public String  authenticationAdmin(@PathVariable String email,	@PathVariable String password) {
+		Optional<Association> association = associationRepository.authenticationAdmin(email, password);
+		return JsonManager.toJson(association.get());
 	}
 	
 	@PutMapping(value = "/cambiarClave/{cedula}/{nuevaClave}")
