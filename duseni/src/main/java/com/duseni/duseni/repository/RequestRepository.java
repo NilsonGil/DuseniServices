@@ -28,5 +28,8 @@ public interface RequestRepository extends CrudRepository<Request, Long> {
 	
 	@Query(value ="SELECT sum(quantity) totalAportado FROM duseni.contribution where duseni.contribution.id_request = (:idPedido)", nativeQuery = true)
 	Iterable<String> getTotalUnididadesAportadasPorPedido(Long idPedido);
-
+	
+	// reporte WEB
+	@Query(value ="SELECT first_name, first_last_name,quantity    FROM duseni.contribution join duseni.member on duseni.contribution.id_member =  duseni.member.cedula_member  where duseni.contribution.id_request =  (:idPedido) ", nativeQuery = true)
+	Iterable<String> getTotalPersonasQueAportaronApedido(Long idPedido);
 }

@@ -86,12 +86,14 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	 */
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
+		
 		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(Arrays.asList(
-				"http://localhost:4200",
-				"http://3.14.74.92",
-				"http://localhost:8200",
-				"http://localhost:8100"
+		configuration.setAllowedOrigins(
+				Arrays.asList("*"
+//				"http://localhost:4200",
+//				"http://3.14.74.92",
+//				"http://localhost:8200",
+//				"http://localhost:8100"
 						)
 				);
 		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));

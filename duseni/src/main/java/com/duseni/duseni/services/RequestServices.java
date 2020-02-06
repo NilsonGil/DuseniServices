@@ -90,4 +90,14 @@ public class RequestServices {
 		return JsonManager.toJson(requestRepository.getTotalUnididadesAportadasPorPedido(idPedido));
 	}
 	
+	
+	@GetMapping(value = "/totalPersonasQueAportaronApedido/{idPedido}")
+	public String getTotalPersonasQueAportaronApedido(@PathVariable Long idPedido) {
+		return JsonManager.toJson(requestRepository.getTotalPersonasQueAportaronApedido(idPedido));
+	}
+	
+	
+	
+	
+	
 }
