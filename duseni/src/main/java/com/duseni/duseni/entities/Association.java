@@ -23,8 +23,8 @@ public class Association {
 
 	private String image_profile_association;
 
-	@NotNull
-	@OneToOne(cascade = CascadeType.ALL)
+	
+	@OneToOne
 	private Address address;
 
 	/********* GETTERS Y SETTERS *******/
